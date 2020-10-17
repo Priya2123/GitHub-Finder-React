@@ -1,6 +1,11 @@
 import React from "react";
 import NavBar from "./components/layout/NavBar";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {
+  HashRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from "react-router-dom";
 import "./App.css";
 import About from "./components/pages/About";
 import User from "./components/users/User";
@@ -20,6 +25,13 @@ const App = () => {
               {/* adding them as props here */}
               <Alert />
               <Switch>
+                <Route
+                  exact
+                  path="/GitHub-Finder-React"
+                  render={() => {
+                    return <Redirect to="/" />;
+                  }}
+                />
                 <Route exact path="/" component={Home} />
                 <Route exact path="/about" component={About} />
                 <Route exact path="/user/:login" component={User} />

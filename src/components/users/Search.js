@@ -1,6 +1,18 @@
 import React, { useState, useContext } from "react";
 import GithubContext from "../../context/github/githubContext";
 import AlertContext from "../../context/alert/alertContext";
+import { motion } from "framer-motion";
+
+const buttonVariants = {
+  hover: {
+    scale: 0.9,
+    boxShadow: "0px 0px 8px black",
+    transition: {
+      yoyo: Infinity,
+      duration: 0.8,
+    },
+  },
+};
 
 const Search = () => {
   const githubContext = useContext(GithubContext);
@@ -21,7 +33,7 @@ const Search = () => {
   };
 
   return (
-    <div>
+    <motion.div>
       <form onSubmit={onSubmit} className="form">
         <input
           type="text"
@@ -30,7 +42,9 @@ const Search = () => {
           value={text}
           onChange={onChange}
         />
-        <input
+        <motion.input
+          variants={buttonVariants}
+          whileHover="hover"
           type="submit"
           value="Search"
           className="btn btn-dark btn-block"
@@ -45,7 +59,7 @@ const Search = () => {
           Clear
         </button>
       )}
-    </div>
+    </motion.div>
   );
 };
 
