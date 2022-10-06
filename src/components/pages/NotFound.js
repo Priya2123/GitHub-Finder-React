@@ -1,10 +1,19 @@
 import React from "react";
+import Lottie from "react-lottie";
+import animation from "./githubfinder-notfound.json";
 
 const NotFound = () => {
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: animation,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
   return (
     <div>
-      <h1>Not Found</h1>
-      <p className="lead">The page that you are searching for doesn't exist</p>
+      <Lottie style={{ height: "85vh" }} options={defaultOptions} />
     </div>
   );
 };
